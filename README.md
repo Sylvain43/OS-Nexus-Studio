@@ -109,6 +109,7 @@ Multi-client TCP server on port 9090:
 - Concurrent client handling
 - Real-time connection status
 - Binary and text file support
+- Nginx reverse proxy integration
 
 
 ## Getting Started
@@ -117,18 +118,31 @@ Multi-client TCP server on port 9090:
 
 - Python 3.8+ (for GUI frontend)
 - MinGW-w64 with g++ (for backend compilation)
-- Windows 10/11
+- Docker & Docker Compose (for containerized deployment)
+- Nginx (for reverse proxy)
 
 ### Quick Start
 
-#### GUI Frontend (Recommended)
+#### Local Deployment
+
 ```cmd
+# GUI Frontend (Recommended)
 python client/mainClient.py
+
+# Backend Terminal
+server/main_system.exe
 ```
 
-#### Backend Terminal
+#### Docker Deployment
+
 ```cmd
-server/main_system.exe
+# Build and run with Docker Compose
+cd docker
+docker-compose up --build
+
+# Access services:
+# - GUI: http://localhost:8080
+# - File Server API: http://localhost:8080/api/
 ```
 
 
@@ -137,17 +151,22 @@ server/main_system.exe
 ```
 OS-Nexus-Studio/
 ├── README.md                 # Documentation
-├── LICENSE                    # MIT License
-├── .gitignore                # Git ignore rules
+├── LICENSE                   # MIT License
+├── .gitignore               # Git ignore rules
 ├── client/
 │   └── mainClient.py         # GUI Frontend (Python/tkinter)
-└── server/
-    ├── main_system.cpp       # Main backend (C++)
-    ├── main_system.exe       # Compiled executable
-    ├── scheduler.cpp         # Standalone scheduler
-    ├── scheduler.exe         # Compiled executable
-    ├── file_server.cpp       # Standalone file server
-    └── file_server.exe       # Compiled executable
+├── server/
+│   ├── main_system.cpp      # Main backend (C++)
+│   ├── main_system.exe      # Compiled executable
+│   ├── scheduler.cpp        # Standalone scheduler
+│   ├── scheduler.exe        # Compiled executable
+│   ├── file_server.cpp      # Standalone file server
+│   └── file_server.exe      # Compiled executable
+├── nginx/
+│   └── nginx.conf           # Nginx reverse proxy configuration
+└── docker/
+    ├── Dockerfile           # Docker container definition
+    └── docker-compose.yml    # Docker Compose orchestration
 ```
 
 
@@ -266,22 +285,41 @@ Avg Turnaround Time: 7.33
                   │
                   ▼
 ┌─────────────────────────────────────────┐
-│           Backend (C++)                  │
+│           Backend (C++)                 │
 │                                         │
 │  ┌─────────────────────────────────┐    │
 │  │    Custom Memory Allocator       │    │
 │  └─────────────────────────────────┘    │
 │                                         │
 │  ┌─────────────────────────────────┐    │
-│  │    CPU Scheduler                 │    │
+│  │    CPU Scheduler                  │    │
 │  │  - FCFS  - SJF                  │    │
 │  │  - Priority  - Round Robin       │    │
 │  └─────────────────────────────────┘    │
 │                                         │
 │  ┌─────────────────────────────────┐    │
 │  │    TCP File Server               │    │
-│  │  - LIST  - GET  - INFO          │    │
+│  │  - LIST  - GET  - INFO         │    │
 │  └─────────────────────────────────┘    │
+└─────────────────┬───────────────────────┘
+                  │
+                  ▼
+┌─────────────────────────────────────────┐
+│           Nginx Reverse Proxy           │
+│                                         │
+│  - Load balancing                       │
+│  - Static file serving                  │
+│  - SSL termination                      │
+│  - Rate limiting                       │
+└─────────────────┬───────────────────────┘
+                  │
+                  ▼
+┌─────────────────────────────────────────┐
+│           Docker Container              │
+│                                         │
+│  - Isolated environment                │
+│  - Reproducible deployment              │
+│  - Easy scaling                        │
 └─────────────────────────────────────────┘
 ```
 
@@ -291,6 +329,7 @@ Avg Turnaround Time: 7.33
 2. Frontend sends data to backend via pipe
 3. Backend computes scheduling results
 4. Results returned and visualized in GUI
+5. Nginx serves as reverse proxy for file server
 
 
 ## Building from Source
@@ -312,6 +351,85 @@ g++ -std=c++11 -o server/scheduler server/scheduler.cpp
 ```cmd
 g++ -o server/file_server server/file_server.cpp -lws2_32
 ```
+
+
+## Docker Deployment
+
+### Quick Start with Docker
+
+```cmd
+# Navigate to docker directory
+cd docker
+
+# Build and start containers
+docker-compose up --build
+
+# View logs
+docker-compose logs -f
+
+# Stop containers
+docker-compose down
+```
+
+### Services
+
+| Service | Port | Description |
+|---------|------|-------------|
+| app | 9090 | Main application |
+| nginx | 8080 | Reverse proxy |
+
+### Environment Variables
+
+```yaml
+environment:
+  - PYTHONUNBUFFERED=1
+  - APP_ENV=production
+```
+
+### Volume Mounts
+
+| Host Path | Container Path | Description |
+|-----------|---------------|-------------|
+| ../server | /app/server | Backend source |
+| ../client | /app/client | Frontend source |
+
+
+## Nginx Configuration
+
+### Features
+
+- **Reverse Proxy** - Routes requests to backend services
+- **Gzip Compression** - Compresses responses
+- **Load Balancing** - Distributes traffic across instances
+- **Health Checks** - Monitors backend availability
+- **Static Files** - Serves frontend assets
+
+### Configuration File
+
+Located at: `nginx/nginx.conf`
+
+```nginx
+# Key settings
+listen 8080;
+upstream file_server {
+    server 127.0.0.1:9090;
+    keepalive 32;
+}
+
+location /api/ {
+    proxy_pass http://file_server/;
+    proxy_set_header Host $host;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+}
+
+### Available Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `/` | Frontend UI |
+| `/api/` | File server API |
+| `/health` | Health check |
 
 
 ## API Reference
@@ -408,8 +526,11 @@ Fragmentation: 0.00%
 | g++ not found | Install MinGW-w64 and add to PATH. Restart terminal after installation. |
 | Python not found | Reinstall Python with "Add to PATH" option enabled. |
 | GUI won't start | Ensure tkinter is installed: `pip install tk` |
+| Docker build fails | Ensure Docker is running and has sufficient resources |
 | Port 9090 in use | Close any running file server or change PORT in source code |
-| Backend crashes | Ensure no other instance is running. Check Task Manager. |
+| Nginx fails to start | Check logs: `docker-compose logs nginx` |
+| Container won't start | Check application logs: `docker-compose logs app` |
+
 
 
 ## License
@@ -417,3 +538,15 @@ Fragmentation: 0.00%
 MIT License - Open-source project for educational purposes.
 
 Copyright (c) 2026 Ujjwal Saini
+
+Author: [Ujjwal Saini](https://www.ujjwalsaini.dev/)
+
+---
+
+## Project Metadata
+
+Complete project information is available in:
+- [metadata.json](metadata.json) - JSON format for programmatic access
+- [metadata.yaml](metadata.yaml) - YAML format for human readability
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so.
