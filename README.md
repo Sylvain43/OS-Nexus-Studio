@@ -6,7 +6,7 @@ A comprehensive multi-component system featuring custom memory allocator, enhanc
 
 ### Option 1: GUI Frontend (Recommended)
 ```cmd
-python client/frontend.py
+python client/mainClient.py
 ```
 
 ### Option 2: Backend Terminal (Single Entry Point)
@@ -14,7 +14,6 @@ python client/frontend.py
 server/main_system.exe
 ```
 
----
 
 ## 🎯 Single Backend Entry Point
 
@@ -29,20 +28,23 @@ The [`server/main_system.exe`](server/main_system.cpp) is the **main and only re
   5. CPU Scheduler (Round Robin)  
   6. Run All Schedulers          
   7. Start File Server           
+  9. List Processes (API)        
+ 10. Add Process (API)           
+ 11. Clear All Processes (API)   
+ 12. Load Sample Processes (API) 
   8. Exit                        
 ```
 
----
 
 ## ✨ Features
 
 ### 🎨 Modern GUI Frontend
 - Clean, professional tkinter interface with custom themes
-- Real-time process management (add, view, clear)
+- **Add custom processes** with ID, Arrival Time, Burst Time, Priority
+- **Clear all processes** or **load sample data**
 - One-click algorithm execution (FCFS, SJF, Priority, Round Robin)
 - Visual results with tabbed output
-- Sample data loader for quick testing
-- Connection to enhanced backend
+- **All processes stored in frontend - customize your own data!**
 
 ### 🧠 Custom Memory Allocator
 - **1MB Heap** with block-based allocation
@@ -85,7 +87,7 @@ OS-Nexus-Studio/
 ├── LICENSE                   # MIT License
 ├── .gitignore                # Git ignore rules
 ├── client/
-│   └── frontend.py           # Modern tkinter GUI
+│   └── mainClient.py         # ⭐ Modern tkinter GUI
 └── server/
     ├── main_system.cpp       # ⭐ MAIN BACKEND (All-in-one)
     ├── main_system.exe        # ⭐ Compiled executable
@@ -104,16 +106,18 @@ OS-Nexus-Studio/
 
 1. Launch the GUI:
    ```cmd
-   python client/frontend.py
+   python client/mainClient.py
    ```
 
-2. **Add Processes:**
-   - Enter Process ID, Arrival Time, Burst Time, Priority
-   - Click "Add Process"
-   - Sample data (5 processes) loads automatically on startup
+2. **Add Custom Processes:**
+   - Enter Process ID (e.g., P1), Arrival Time, Burst Time, Priority
+   - Click "Add Process" to add to the list
+   - Click "Clear All" to reset
+   - Click "Load Sample Data" to restore default 5 processes
 
 3. **Run Algorithms:**
    - Click any algorithm button (FCFS, SJF, Priority, Round Robin)
+   - Your custom processes will be sent to the backend for processing
    - Or "Run All Algorithms" for comparison
    - View results in the tabbed panels
 
@@ -185,7 +189,7 @@ g++ -o server/file_server server/file_server.cpp -lws2_32
 | File | Description |
 |------|-------------|
 | [`server/main_system.cpp`](server/main_system.cpp) | ⭐ **Main backend** - Complete system with memory allocator, all schedulers, and file server |
-| [`client/frontend.py`](client/frontend.py) | Modern GUI frontend connecting to backend |
+| [`client/mainClient.py`](client/mainClient.py) | ⭐ **GUI Frontend** - Add custom processes, run algorithms, view results |
 | [`server/scheduler.cpp`](server/scheduler.cpp) | Standalone CPU scheduler (optional) |
 | [`server/file_server.cpp`](server/file_server.cpp) | Standalone TCP file server (optional) |
 
