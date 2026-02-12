@@ -1,0 +1,47 @@
+# Compiled executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Compiled object files
+*.o
+*.obj
+
+# Build directories
+build/
+bin/
+obj/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*~
+*.tmp
+*.bak
