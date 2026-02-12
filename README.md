@@ -2,37 +2,60 @@
 
 OS Nexus Studio is an educational operating system simulation platform combining a high-performance C++ backend with a Python GUI frontend. It demonstrates CPU scheduling algorithms (FCFS, SJF, Priority, Round Robin) alongside a multithreaded TCP file server for concurrent client handling. Designed for clarity and learning, the project visualizes process execution, networking, and synchronization concepts in a practical environment 🚀, making core OS concepts easier to understand and experiment with 🧠.
 
+[![Github License](https://img.shields.io/github/license/UjjwalSaini07/OS-Nexus-Studio)](https://github.com/UjjwalSaini07/OS-Nexus-Studio/blob/main/LICENSE)
+[![Info](https://img.shields.io/badge/Project-Info-blue?style=flat&logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6IzBBNEVBRjsiIGQ9Ik0yNTYsNTEyYy02OC4zOCwwLTEzMi42NjctMjYuNjI5LTE4MS4wMi03NC45OEMyNi42MjksMzg4LjY2NywwLDMyNC4zOCwwLDI1Ng0KCVMyNi42MjksMTIzLjMzMyw3NC45OCw3NC45OEMxMjMuMzMzLDI2LjYyOSwxODcuNjIsMCwyNTYsMHMxMzIuNjY3LDI2LjYyOSwxODEuMDIsNzQuOThDNDg1LjM3MSwxMjMuMzMzLDUxMiwxODcuNjIsNTEyLDI1Ng0KCXMtMjYuNjI5LDEzMi42NjctNzQuOTgsMTgxLjAyQzM4OC42NjcsNDg1LjM3MSwzMjQuMzgsNTEyLDI1Niw1MTJ6Ii8+DQo8cGF0aCBzdHlsZT0iZmlsbDojMDYzRThCOyIgZD0iTTQzNy4wMiw3NC45OEMzODguNjY3LDI2LjYyOSwzMjQuMzgsMCwyNTYsMHY1MTJjNjguMzgsMCwxMzIuNjY3LTI2LjYyOSwxODEuMDItNzQuOTgNCglDNDg1LjM3MSwzODguNjY3LDUxMiwzMjQuMzgsNTEyLDI1NlM0ODUuMzcxLDEyMy4zMzMsNDM3LjAyLDc0Ljk4eiIvPg0KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0yNTYsMTg1Yy0zMC4zMjcsMC01NS0yNC42NzMtNTUtNTVzMjQuNjczLTU1LDU1LTU1czU1LDI0LjY3Myw1NSw1NVMyODYuMzI3LDE4NSwyNTYsMTg1eiBNMzAxLDM5NQ0KCVYyMTVIMTkxdjMwaDMwdjE1MGgtMzB2MzBoMTQwdi0zMEgzMDF6Ii8+DQo8Zz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojQ0NFRkZGOyIgZD0iTTI1NiwxODVjMzAuMzI3LDAsNTUtMjQuNjczLDU1LTU1cy0yNC42NzMtNTUtNTUtNTVWMTg1eiIvPg0KCTxwb2x5Z29uIHN0eWxlPSJmaWxsOiNDQ0VGRkY7IiBwb2ludHM9IjMwMSwzOTUgMzAxLDIxNSAyNTYsMjE1IDI1Niw0MjUgMzMxLDQyNSAzMzEsMzk1IAkiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K)](https://github.com/UjjwalSaini07/OS-Nexus-Studio/blob/main/README.md)
+[![Generic badge](https://img.shields.io/badge/Owner-@Ujjwal-<COLOR>.svg)](https://github.com/UjjwalSaini07/OS-Nexus-Studio)
+[![Generic Repo Size badge](https://img.shields.io/github/repo-size/UjjwalSaini07/OS-Nexus-Studio?style=flat&logo=github)](https://github.com/UjjwalSaini07/OS-Nexus-Studio)
+[![GitHub stars](https://img.shields.io/github/stars/UjjwalSaini07/OS-Nexus-Studio?style=social&label=Star&maxAge=2592100)](https://github.com/UjjwalSaini07/OS-Nexus-Studio/stargazers)
+[![Github Release](https://img.shields.io/github/v/release/UjjwalSaini07/OS-Nexus-Studio)](https://github.com/UjjwalSaini07/OS-Nexus-Studio)
+
+![OS-Nexus](https://github.com/user-attachments/assets/ea742259-00f3-4085-81f2-12f7e3fff0e3)
+
+
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Features](#features)
-   - [CPU Scheduling](#cpu-scheduling)
-   - [Memory Allocator](#memory-allocator)
-   - [File Server](#file-server)
-3. [Getting Started](#getting-started)
-4. [Project Structure](#project-structure)
-5. [Usage Guide](#usage-guide)
-   - [GUI Frontend](#gui-frontend)
-   - [Backend Terminal](#backend-terminal)
-   - [API Mode](#api-mode)
-6. [Architecture](#architecture)
-7. [Building from Source](#building-from-source)
-8. [API Reference](#api-reference)
-9. [Examples](#examples)
-10. [Troubleshooting](#troubleshooting)
-11. [Contributing](#contributing)
-12. [License](#license)
+| SNo. | Section | Link |
+|---|--------|-----|
+| 1 | Overview | [Overview](#overview) |
+| 2 | Features | [Features](#features) |
+| 2.1 | CPU Scheduling | [CPU Scheduling](#cpu-scheduling) |
+| 2.2 | Memory Allocator | [Memory Allocator](#memory-allocator) |
+| 2.3 | File Server | [File Server](#file-server) |
+| 3 | Getting Started | [Getting Started](#getting-started) |
+| 4 | Project Structure | [Project Structure](#project-structure) |
+| 5 | Usage Guide | [Usage Guide](#usage-guide) |
+| 5.1 | GUI Frontend | [GUI Frontend](#gui-frontend) |
+| 5.2 | Backend Terminal | [Backend Terminal](#backend-terminal) |
+| 5.3 | API Mode | [API Mode](#api-mode) |
+| 6 | Architecture | [Architecture](#architecture) |
+| 7 | Building from Source | [Building from Source](#building-from-source) |
+| 8 | API Reference | [API Reference](#api-reference) |
+| 9 | Examples | [Examples](#examples) |
+|10 | Troubleshooting | [Troubleshooting](#troubleshooting) |
+|11 | License | [License](#license) |
 
+## 🧩 Overview
 
-## Overview
+**OS Nexus Studio** is an interactive operating system simulation platform built to transform theoretical OS concepts into practical experience. The project integrates real execution logic with visual interaction, allowing users to observe how core system components behave, interact, and respond under different conditions.
 
-OS-Nexus-Studio provides hands-on experience with core operating system concepts through an interactive simulation platform. The system demonstrates:
+The platform demonstrates:
 
-- **CPU Scheduling** - Four scheduling algorithms with visual output and metrics
-- **Memory Management** - Custom block-based memory allocator
-- **Networking** - Multi-client TCP file server
+### ⚙️ Core Modules
+- **CPU Scheduling** — Multiple algorithms (FCFS, SJF, Priority, Round Robin) with execution timelines, waiting/turnaround metrics, and comparative analysis
+- **Memory Management** — Custom block-based allocator illustrating allocation, deallocation, and fragmentation behavior
+- **Networking** — Multithreaded TCP file server supporting concurrent clients and request handling
 
-The platform bridges theory and practice by allowing users to experiment with OS concepts in a controlled environment.
+### 🧠 Learning & Analysis
+- Visual understanding of process lifecycle and queue behavior
+- Performance comparison between scheduling strategies
+- Practical demonstration of concurrency and synchronization
+- Safe experimentation without affecting the real system
+
+### 🎯 Purpose
+OS Nexus Studio bridges the gap between academic theory and real operating system behavior. Instead of only reading algorithms, users can run, observe, and analyze them in action — making complex OS concepts easier to understand, test, and demonstrate in an educational or academic setting.
+
+The project serves as a compact laboratory for exploring how operating systems manage processes, memory, and communication in a controlled environment.
+
 
 
 ## Features
