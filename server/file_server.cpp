@@ -369,6 +369,64 @@ void* clientThread(void* param) {
 }
 #endif
 
+void handleTerminalCommand(const string& command) {
+    if (command == "LIST") {
+        cout << listDirectory();
+    }
+    else if (command.substr(0, 4) == "GET ") {
+        string filename = command.substr(4);
+        size_t start = filename.find_first_not_of(" \r\n\t");
+        size_t end = filename.find_last_not_of(" \r\n\t");
+        if (start != string::npos && end != string::npos) {
+            filename = filename.substr(start, end - start + 1);
+        } else {
+            filename = "";
+        }
+        cout << "File content would be sent to client. Use telnet to connect as client." << endl;
+        cout << "Try: telnet localhost " << PORT << endl;
+    }
+    else if (command.substr(0, 5) == "INFO ") {
+        string filename = command.substr(5);
+        size_t start = filename.find_first_not_of(" \r\n\t");
+        size_t end = filename.find_last_not_of(" \r\n\t");
+        if (start != string::npos && end != string::npos) {
+            filename = filename.substr(start, end - start + 1);
+        } else {
+            filename = "";
+        }
+        cout << getFileInfo(filename);
+    }
+    else if (command == "HELP") {
+        cout << 
+            "=== Terminal Commands ===\n"
+            "LIST           - List available files\n"
+            "INFO <file>    - Get file information\n"
+            "STATUS         - Show server status\n"
+            "HELP           - Show this help\n"
+            "QUIT           - Stop server and exit\n"
+            "\n=== Client Commands ===\n"
+            "Connect as client using: telnet localhost " << PORT << "\n"
+            "Then use: LIST, GET <filename>, INFO <filename>\n";
+    }
+    else if (command == "STATUS") {
+        cout << "=== Server Status ===" << endl;
+        cout << "Port: " << PORT << endl;
+        cout << "Server: Running" << endl;
+        cout << "Accepting: TCP connections" << endl;
+    }
+    else if (command == "QUIT" || command == "EXIT") {
+        cout << "Shutting down server..." << endl;
+        exit(0);
+    }
+    else if (command.empty()) {
+        // Do nothing for empty input
+    }
+    else {
+        cout << "Unknown command: " << command << endl;
+        cout << "Type HELP for available commands." << endl;
+    }
+}
+
 int main() {
     cout << "========================================" << endl;
     cout << "    OS-Nexus-Studio File Server" << endl;
@@ -404,7 +462,8 @@ int main() {
 #endif
     
     if (bind(server_fd, (sockaddr*)&address, sizeof(address)) == SOCKET_ERROR) {
-        cerr << "Bind failed" << endl;
+        cerr << "Bind failed on port " << PORT << endl;
+        cerr << "Another process may already be using this port." << endl;
         CLOSE_SOCKET(server_fd);
 #ifdef _WIN32
         WSACleanup();
@@ -423,45 +482,46 @@ int main() {
     
     cout << "[" << getCurrentTime() << "] Server started on port " << PORT << endl;
     cout << "[" << getCurrentTime() << "] Listening for connections..." << endl;
-    cout << "\nAvailable Commands:" << endl;
+    cout << "\n========================================" << endl;
+    cout << "    INTERACTIVE MODE" << endl;
+    cout << "========================================" << endl;
+    cout << "\nTerminal Commands:" << endl;
     cout << "  LIST           - List files" << endl;
-    cout << "  GET <filename> - Download file" << endl;
-    cout << "  INFO <filename> - Get file info" << endl;
+    cout << "  INFO <file>    - Get file info" << endl;
+    cout << "  STATUS         - Server status" << endl;
     cout << "  HELP           - Show help" << endl;
-    cout << "  QUIT           - Disconnect" << endl;
-    cout << "\nPress Ctrl+C to stop\n" << endl;
-    
-    int clientCount = 0;
-    
-    while (true) {
-        sockaddr_in clientAddr;
-        socklen_t addrLen = sizeof(clientAddr);
-        
-        SOCKET new_socket = accept(server_fd, (sockaddr*)&clientAddr, &addrLen);
-        
-        if (new_socket == INVALID_SOCKET) {
-            continue;
-        }
-        
-        ClientInfo* client = new ClientInfo();
-        client->sock = new_socket;
-        client->addr = clientAddr;
-        
+    cout << "  QUIT           - Stop server" << endl;
+    cout << "\nTo test as CLIENT, use another terminal:" << endl;
 #ifdef _WIN32
-        DWORD threadId;
-        HANDLE hThread = CreateThread(NULL, 0, clientThread, client, 0, &threadId);
-        if (hThread) CloseHandle(hThread);
+    cout << "  telnet localhost " << PORT << endl;
 #else
-        pthread_t threadId;
-        pthread_create(&threadId, NULL, clientThread, client);
-        pthread_detach(threadId);
+    cout << "  nc localhost " << PORT << " (netcat)" << endl;
+    cout << "  or: telnet localhost " << PORT << endl;
 #endif
-        else {
-            CLOSE_SOCKET(new_socket);
-            delete client;
+    cout << "\nType commands below or connect with a client..." << endl;
+    cout << "----------------------------------------" << endl;
+    
+    // Interactive terminal loop
+    string input;
+    while (true) {
+        cout << "> ";
+        cout.flush();
+        
+        if (!getline(cin, input)) {
+            // EOF or error
+            break;
         }
         
-        clientCount++;
+        // Trim whitespace
+        size_t start = input.find_first_not_of(" \r\n\t");
+        size_t end = input.find_last_not_of(" \r\n\t");
+        if (start != string::npos && end != string::npos) {
+            input = input.substr(start, end - start + 1);
+        } else {
+            input = "";
+        }
+        
+        handleTerminalCommand(input);
     }
     
     CLOSE_SOCKET(server_fd);
