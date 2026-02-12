@@ -7,7 +7,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: os-nexus-studio
     ports:
-      - "9090:9090"
+      - "9091:9091"
     volumes:
       - ../server:/app/server
       - ../client:/app/client

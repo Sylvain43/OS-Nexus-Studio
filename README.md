@@ -97,7 +97,12 @@ Custom block-based allocator implementing:
 
 ### File Server
 
-Multi-client TCP server on port 9090:
+Multi-client TCP servers:
+
+| Server | Port | Description |
+|--------|------|-------------|
+| main_system.exe | 9090 | Integrated file server |
+| file_server.exe | 9091 | Standalone file server |
 
 | Command | Description | Usage |
 |---------|-------------|-------|
@@ -324,7 +329,7 @@ docker-compose down
 
 | Service | Port | Description |
 |---------|------|-------------|
-| app | 9090 | Main application |
+| file-server | 9091 | TCP File Server |
 | nginx | 8080 | Reverse proxy |
 
 ### Environment Variables
