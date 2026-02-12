@@ -1,0 +1,114 @@
+project:
+  name: OS-Nexus-Studio
+  description: >
+    An educational operating system simulator featuring CPU scheduling 
+    algorithms, custom memory allocation, and a TCP file server
+  version: 1.0.0
+  release_date: 2026-02-12
+  license: MIT
+  repository: https://github.com/ujjwal-saini/OS-Nexus-Studio
+  documentation: https://github.com/ujjwal-saini/OS-Nexus-Studio#readme
+
+# Author Information
+author:
+  name: Ujjwal Saini
+  email: ujjwalsaini0007@gmail.com
+  url: https://www.ujjwalsaini.dev/
+  github: https://github.com/ujjwal-saini
+  linkedin: https://linkedin.com/in/ujjwalsaini07
+
+# Technologies Used
+technologies:
+  frontend:
+    language: Python
+    framework: tkinter
+    version: 3.8+
+  backend:
+    language: C++
+    standard: C++11
+    compiler: GCC/MinGW
+    dependencies:
+      - Winsock2
+      - Windows API
+  infrastructure:
+    containerization: Docker
+    reverse_proxy: Nginx
+    operating_system: Windows 10/11
+
+# Features
+features:
+  cpu_scheduling:
+    algorithms:
+      - FCFS (First Come First Serve)
+      - SJF (Shortest Job First)
+      - Priority Scheduling
+      - Round Robin
+    metrics:
+      - Completion Time
+      - Turnaround Time
+      - Waiting Time
+      - Gantt Chart Visualization
+
+  memory_management:
+    type: Block-based Allocator
+    heap_size: 1MB
+    strategies:
+      - First-fit Allocation
+      - Block Splitting
+      - Coalescing
+    statistics:
+      - Total Heap Size
+      - Allocated Memory
+      - Free Memory
+      - Fragmentation Percentage
+
+  networking:
+    protocol: TCP
+    port: 9090
+    features:
+      - Multi-client Support
+      - File Listing (LIST)
+      - File Transfer (GET)
+      - File Information (INFO)
+
+# System Requirements
+requirements:
+  minimum:
+    python: 3.8
+    gcc: 6.3.0
+    memory: 256MB
+    storage: 50MB
+  recommended:
+    python: 3.11
+    gcc: 11.0
+    memory: 512MB
+    storage: 100MB
+
+# Contributing
+contributing:
+  guidelines: https://github.com/ujjwal-saini/OS-Nexus-Studio/blob/main/CONTRIBUTING.md
+  issues: https://github.com/ujjwal-saini/OS-Nexus-Studio/issues
+  pull_requests: https://github.com/ujjwal-saini/OS-Nexus-Studio/pulls
+
+# Acknowledgments
+acknowledgments:
+  inspired_by:
+    - Operating System Concepts (Silberschatz, Galvin, Gagne)
+    - Modern Operating Systems (Tanenbaum)
+  thanks_to:
+    - Open Source Community
+    - Contributors
+    - Educators and Students
+
+# Changelog
+changelog:
+  v1.0.0:
+    date: 2026-02-12
+    features:
+      - Initial release
+      - CPU scheduling algorithms
+      - Custom memory allocator
+      - TCP file server
+      - Python GUI frontend
+      - Docker support
+      - Nginx reverse proxy

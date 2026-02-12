@@ -1,0 +1,75 @@
+{
+  "project": {
+    "name": "OS-Nexus-Studio",
+    "description": "An educational operating system simulator featuring CPU scheduling algorithms, custom memory allocation, and a TCP file server",
+    "version": "1.0.0",
+    "releaseDate": "2026-02-12",
+    "license": "MIT",
+    "repository": "https://github.com/ujjwal-saini/OS-Nexus-Studio",
+    "documentation": "https://github.com/ujjwal-saini/OS-Nexus-Studio#readme"
+  },
+  "author": {
+    "name": "Ujjwal Saini",
+    "email": "ujjwalsaini0007@gmail.com",
+    "url": "https://www.ujjwalsaini.dev/",
+    "github": "https://github.com/ujjwal-saini",
+    "linkedin": "https://linkedin.com/in/ujjwalsaini07"
+  },
+  "technologies": {
+    "frontend": {
+      "language": "Python",
+      "framework": "tkinter",
+      "version": "3.8+"
+    },
+    "backend": {
+      "language": "C++",
+      "standard": "C++11",
+      "compiler": "GCC/MinGW",
+      "dependencies": ["Winsock2", "Windows API"]
+    },
+    "infrastructure": {
+      "containerization": "Docker",
+      "reverseProxy": "Nginx",
+      "operatingSystem": "Windows 10/11"
+    }
+  },
+  "features": {
+    "cpuScheduling": {
+      "algorithms": ["FCFS", "SJF", "Priority", "Round Robin"],
+      "metrics": ["Completion Time", "Turnaround Time", "Waiting Time", "Gantt Chart"]
+    },
+    "memoryManagement": {
+      "type": "Block-based Allocator",
+      "heapSize": "1MB",
+      "strategies": ["First-fit", "Block Splitting", "Coalescing"]
+    },
+    "networking": {
+      "protocol": "TCP",
+      "port": 9090,
+      "features": ["Multi-client", "File Listing", "File Transfer", "File Info"]
+    }
+  },
+  "requirements": {
+    "minimum": {
+      "python": "3.8",
+      "gcc": "6.3.0",
+      "memory": "256MB",
+      "storage": "50MB"
+    },
+    "recommended": {
+      "python": "3.11",
+      "gcc": "11.0",
+      "memory": "512MB",
+      "storage": "100MB"
+    }
+  },
+  "contributing": {
+    "guidelines": "https://github.com/ujjwal-saini/OS-Nexus-Studio/blob/main/CONTRIBUTING.md",
+    "issues": "https://github.com/ujjwal-saini/OS-Nexus-Studio/issues",
+    "pullRequests": "https://github.com/ujjwal-saini/OS-Nexus-Studio/pulls"
+  },
+  "acknowledgments": {
+    "inspiredBy": ["Operating System Concepts", "Modern Operating Systems"],
+    "thanksTo": ["Open Source Community", "Contributors"]
+  }
+}
